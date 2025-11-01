@@ -250,5 +250,5 @@ fs.unlink('unwanted.txt', (err) => {
 ```
 - `fs.unlink(path, callback)` removes the file permanently.
 ## Task
-Using everything we’ve learned during this course, create a Ruby project that solves a problem you face in your daily life.  
+Using everything we’ve learned during this course, create JavaScript project that solves a problem you face in your daily life.  
 Think about tasks you often repeat, information you want to organize, or anything you wish could be automated then build a solution using Node.js!
