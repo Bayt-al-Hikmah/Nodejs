@@ -1,13 +1,8 @@
 ## Objectives :
-- Learn About How Computers Work
 - Introduction to Programming Languages
 - Introduction to Node.js
 - User Input and Output
-## How Computers Work
-We all have computers, and we use them for a variety of purposes, including watching videos, playing games, performing mathematical calculations, communicating with friends, and many other applications. But the fundamental question is: how do these devices actually work?  
-The answer lies in their electrical nature. Computers are essentially electrical devices that perform all calculations using electrical signals. The central processing unit (CPU), often referred to as the "brain" of the computer, executes these calculations. To temporarily store data while the computer is in operation, it relies on memory, specifically Random Access Memory (RAM).  
-Crucially, all information within a computer is represented by electrical signals. This includes data stored in memory and the instructions that the CPU executes. These electrical signals exist in one of two distinct states: presence (typically represented by the digit '1') or absence (represented by '0').  
-With this binary representation in mind, we can understand that CPU instructions are essentially sequences of 1s and 0s. This sequence of binary digits is known as machine code, which is the most fundamental level of programming language that the CPU can directly understand.
+
 ## Introduction to Programming Languages
 Programming languages are tools that were developed to facilitate communication with computers. Instead of writing instructions directly in binary code, which can become incredibly cumbersome for large programs, we can use programming languages with their more user-friendly syntax. This simplifies the coding process, making it easier to read, understand, and debug code.  
 However, computers cannot directly understand the syntax of these high-level programming languages. To bridge this gap, we use a program called a compiler or an interpreter. These tools translate the code into machine code, a low-level language consisting of binary instructions that the computer can execute.
@@ -22,15 +17,14 @@ Before starting with Node.js, we need to install it on our system. Node.js comes
 We can download and install Node.js from the official website: [https://nodejs.org/](https://nodejs.org/)
 
 After installation, we can verify it by running these commands in the terminal:
-```
+```shell
 node --version
 npm --version
 ```
 These commands will display the installed versions of Node.js and npm, confirming the setup.
 ### Running our First Program
 Once Node.js is installed, we can run our first JavaScript program using Node.  
-Every Node.js application starts with a JavaScript file, typically containing a `console.log()` statement to output information to the console.
-```
+```js
 console.log('Hello, world!');
 ```
 To run this program:
@@ -47,7 +41,7 @@ In Node.js (and JavaScript in general), we declare variables using `let`, `const
 - `let` and `const` are modern keywords preferred over the older `var`.
 - Use `let` when the variable value will change.  
 - Use `const` when the value should stay constant.
-```
+```js
 let city = 'Algiers'; 
 const country = 'Algeria';
 ```
@@ -58,43 +52,103 @@ We use variables to store data, including numeric values, text (strings), lists 
 
 In JavaScript, we work with primitive data types as our most basic building blocks. These types have three crucial behaviors we need to understand:
 
-1. **Direct Memory Storage** - When we create primitive values, they're stored directly in the variable's memory location
-2. **Immutability** - Once we create them, we can't modify primitive values themselves
-3. **Value-based Operations** - When we try to "change" a primitive, we're actually creating a brand new value in memory
+1. **Direct Memory Storage** - When we create primitive values, they're stored directly in the variable's memory location
+2. **Immutability** - Once we create them, we can't modify primitive values themselves
+3. **Value-based Operations** - When we try to "change" a primitive, we're actually creating a brand new value in memory
 #### Number
-The first primitive type we encounter in JavaScript is the `number` type. We use this type to represent all numeric values, including both integers and floating-point numbers.
-```
+The first primitive type we encounter in JavaScript is the `number` type. We use this type to represent all numeric values, including both integers and floating-point numbers.
+```js
 let age = 23;
 let pi = 3.14;
 let negative_number = -5;
 ```
 #### Bigint
-BigInt is a primitive data type we use to represent integer values that are too large to be stored safely as regular Numbers. We create BigInts by appending `n` to the end of an integer or using the `BigInt()` constructor.
+BigInt is a primitive data type we use to represent integer values that are too large to be stored safely as regular Numbers. We create BigInts by appending `n` to the end of an integer or using the `BigInt()` constructor.
 
+```js
+let number1 = 12345678901234567890n;
+let number2 = BigInt("9007199254740991");
 ```
-let number1 = 12345678901234567890n
-let number2 = BigInt("9007199254740991")
+#### Working with numbers
+We can perform arithmetic operations using the following operators:
+
+- `+` (addition)
+- `-` (subtraction)
+- `*` (multiplication)
+- `/` (division)
+- `%` (modulus or remainder)
+- `**` (exponent)
+
+```js
+let total = 10 + 5;      // 15
+let half = 20 / 2.0;     // 10
+let remainder = 17 % 5;  // 2
+let power = 2 ** 3;      // 8
 ```
+
+##### Increment/Decrement Operators
+
+JavaScript provides convenient shorthand operators to make your code more concise, especially when modifying a variable's value based on its current value.
+
+**Increment and Decrement Operators (`++` and `--`)** These are specifically for increasing or decreasing a numeric variable's value by one. They come in two forms:
+
+- **Pre-increment/decrement (`++var`, `--var`)**: The operation is performed before the value is used in the expression.
+
+```js
+let count = 5;
+let newValue = ++count; // count becomes 6, then newValue is 6
+console.log(`Count: ${count}, New Value: ${newValue}`); // Output: Count: 6, New Value: 6
+
+let x = 10;
+let result = --x; // x becomes 9, then result is 9
+console.log(`X: ${x}, Result: ${result}`); // Output: X: 9, Result: 9
+```
+
+- **Post-increment/decrement (`var++`, `var--`)**: The operation is performed after the value is used in the expression.
+
+```js
+let count = 5;
+let newValue = count++; // newValue is 5, then count becomes 6
+console.log(`Count: ${count}, New Value: ${newValue}`); // Output: Count: 6, New Value: 5
+
+let x = 10;
+let result = x--; // result is 10, then x becomes 9
+console.log(`X: ${x}, Result: ${result}`); // Output: X: 9, Result: 10
+```
+
+#### Shorthand Assignment
+
+**Compound Assignment Operators (`+=`, `-=`, `*=`, `/=`, `%=`, `**=`)** These operators combine an arithmetic operation with an assignment. They are a shorthand for updating a variable by performing an operation on its current value.
+
+|Operator|Longhand Equivalent|Description|Example|
+|---|---|---|---|
+|`+=`|`variable = variable + value;`|Add `value` to `variable`|`x += 5;` (same as `x = x + 5;`)|
+|`-=`|`variable = variable - value;`|Subtract `value` from `variable`|`y -= 3;` (same as `y = y - 3;`)|
+|`*=`|`variable = variable * value;`|Multiply `variable` by `value`|`z *= 2;` (same as `z = z * 2;`)|
+|`/=`|`variable = variable / value;`|Divide `variable` by `value`|`a /= 4;` (same as `a = a / 4;`)|
+|`%=`|`variable = variable % value;`|Assign the remainder of `variable` divided by `value`|`b %= 7;` (same as `b = b % 7;`)|
+|`**=`|`variable = variable ** value;`|Assign `variable` raised to the power of `value`|`c **= 3;` (same as `c = c ** 3;`)|
+
 #### String
-The `string` type is used to store and manipulate textual data. We can create strings by enclosing our text in either single quotes **('')**, double quotes **("")**, or backticks **(``)** for template literals.
+The `string` type is used to store and manipulate textual data. We can create strings by enclosing our text in either single quotes **('')**, double quotes **("")**, or backticks **(``)** for template literals.
 
-```
+```js
 let greeting = "Hello World";
 let name = 'Alice';
 ```
 
-Template literals (enclosed in backticks `` ` ``) allow us to embed expressions and variables directly into strings,To inject values we create string using `` ` `` then we insert variables or expressions with `${}` 
+Template literals (enclosed in backticks `` ` ``) allow us to embed expressions and variables directly into strings,To inject we use `${}`   
 
-```
+```js
 let name = "Alice";
 let greeting = `Hello, ${name}!`; 
 ```
 
-The greeting variable will have as value `Hello, Alice`
+The greeting variable will have as value `Hello, Alice`
 #### Boolean
-Booleans are used to store the results of logical operations, with only two possible values: `true` or `false`.
+Booleans are used to store the results of logical operations, with only two possible values: `true` or `false`.
 
-```
+```js
 let is_adult = false;
 ```
 
@@ -102,28 +156,28 @@ JavaScript automatically converts any value to a boolean when used in a logical 
 
 **Truthy Values**
 
-```
+```js
 true, "text", 1, [], {}, 3.14, Infinity, -1, "false"
 ```
 
 **Falsy Values**
 
-```
+```js
 false, 0, "", null, undefined, NaN, 0n
 ```
 
 #### Undefined
 
-`undefined` represents a variable that has been declared but not yet assigned a value. It is JavaScript's default state for uninitialized variables.
+`undefined` represents a variable that has been declared but not yet assigned a value. It is JavaScript's default state for uninitialized variables.
 
 ```
 let number;
 ```
 
-Here type of number will be `undefined`
+Here type of number will be `undefined`
 
 #### Null
-`null` is a special primitive value that represents the intentional absence of any object value. We use it to explicitly indicate that a variable should have "no value" or "empty value."
+`null` is a special primitive value that represents the intentional absence of any object value. We use it to explicitly indicate that a variable should have "no value" or "empty value."
 
 ```
 let user = null;
@@ -132,18 +186,18 @@ let user = null;
 ### Non-Primitive Data Types
 Unlike primitive types, non-primitive types (objects) are mutable and store references to memory locations rather than direct values. They share these key behaviors:
 
-1. **Reference Storage** - Variables store pointers to memory locations
-2. **Mutability** - We can modify their contents without creating new references
-3. **Pass-by-Reference** - Assignments/copies share the same underlying data
+1. **Reference Storage** - Variables store pointers to memory locations
+2. **Mutability** - We can modify their contents without creating new references
+3. **Pass-by-Reference** - Assignments/copies share the same underlying data
 
 #### Object
 We use objects to store collections of key-value pairs, where:
-- **Keys** are always strings.
-- **Values** can be any data type including other objects, functions, or primitives
+- **Keys** are always strings.
+- **Values** can be any data type including other objects, functions, or primitives
 
-To create an object, we place key-value pairs inside curly braces `{}`. We separate each key from its value with a colon (`:`), and multiple pairs with commas (`,`):
+To create an object, we place key-value pairs inside curly braces `{}`. We separate each key from its value with a colon (`:`), and multiple pairs with commas (`,`):
 
-```
+```js
 const user = {
   name: "Alex",       
   age: 30,            
@@ -156,27 +210,26 @@ const user = {
 ```
 
 There are two ways to access elements inside an object:
-1. **Dot Notation**  
-    We start with the object name, followed by a dot (`.`), then the key:
-```
+1. **Dot Notation:** We start with the object name, followed by a dot (`.`), then the key:
+
+```js
 user.name;
 ```
-2. **Bracket Notation**  
-    We start with the object name, followed by square brackets `[]` containing the key (as a string):
+2. **Bracket Notation:** We start with the object name, followed by square brackets `[]` containing the key (as a string):
 
-```
+```js
 user["name"];
 ```
 
 #### Arrays
 We use arrays to store ordered collections of data where:
-- **Elements** can be any data type (including other arrays/objects)
-- **Indexes** are zero-based integer positions
-- **Length** dynamically adjusts as we add/remove items
+- **Elements** can be any data type (including other arrays/objects)
+- **Indexes** are zero-based integer positions
+- **Length** dynamically adjusts as we add/remove items
 
-To create an array, we place values inside **square brackets `[]`**. We separate the values with commas (`,`):
+To create an array, we place values inside **square brackets `[]`**. We separate the values with commas (`,`):
 
-```
+```js
 const mixedArray = [
   "text",          
   42,              
@@ -185,11 +238,11 @@ const mixedArray = [
   ["nested"]
 ];
 ```
-We access values inside an array by using indexes. The first element has index 0. For example, to access the value 42 we use `mixedArray[1]`.
+We access values inside an array by using indexes. The first element has index 0. For example, to access the value 42 we use `mixedArray[1]`.
 #### Functions
-The final non-primitive data type is the **function**. We use functions to create reusable blocks of code that execute only when called.
+The final non-primitive data type is the **function**. We use functions to create reusable blocks of code that execute only when called.
 
-```
+```js
 function greet(name) {
   return `Hello, ${name}!`;
 }
@@ -197,7 +250,7 @@ greet("Ali");
 ```
 ### Constants
 Constants are variables whose values cannot be changed once assigned. We create constans by using the keyword `const`
-```
+```js
 const pi = 3.14159; 
 const maxUsers = 100;
 ```
@@ -205,24 +258,24 @@ const maxUsers = 100;
 JavaScript offers flexible ways to convert between types.
 #### To Number
 We can convert string variable to number usint `Number()` is the function coudn't convert it will return `NaN`
-```
+```js
 let value = Number("42"); 
 let safeValue = parseInt("42");
 ```
 #### To String
 We can Convert other data types to string using `.toString()` or `String()`
-```
+```js
 let message = (100).toString(); 
 let status = String(true);`
 ```
 #### To Boolean
 We can also convert other types to boolean. Depending on their values, we will get either `true` or `false`.
-```
+```js
 let isNonEmpty = Boolean("hello"); // true 
 let isZero = Boolean(0); // false
 ```
 Now for the **Node.js (JavaScript) truthy/falsy table**:  
-**falsy table:**
+
 
 |**Value**|**Boolean Equivalent**|**Description**|
 |---|---|---|
@@ -235,7 +288,9 @@ Now for the **Node.js (JavaScript) truthy/falsy table**:
 |`undefined`|`false`|Undefined value|
 |`NaN`|`false`|Not-a-Number|
 
+
 Everything **else** in JavaScript (and Node.js) is **truthy**, including:
+
 
 | **Value**       | **Boolean Equivalent** | **Description**    |
 | --------------- | ---------------------- | ------------------ |
@@ -248,17 +303,18 @@ Everything **else** in JavaScript (and Node.js) is **truthy**, including:
 | `new Date()`    | `true`                 | Date object        |
 | `Infinity`      | `true`                 | Positive infinity  |
 | `-Infinity`     | `true`                 | Negative infinity  |
+
 ### Comments
 Comments are lines of code that the computer will ignore and not execute. JavaScript has two types of comments. They help us add explanations and documentation to our scripts.
 #### Single-line Comments
 We create them using `//`; everything that comes after it will be a comment until the next line.
-```
+```js
 // This is a single-line comment 
 console.log("Hello, world!"); // Prints greeting
 ```
 #### Multi-line Comments
 If we want a multi-line comment, we use `/* */`. Everything inside will be considered a comment.
-```
+```js
 /* This is a multi-line comment. 
 Useful for longer explanations. */
 ```
@@ -266,11 +322,11 @@ Useful for longer explanations. */
 Interacting with the user is essential in most applications. Node.js provides built-in modules to handle input and output.
 ### Output
 When we want to display information or messages to the console we use `console.log()`.
-```
+```js
 console.log("Hello!");
 ```
 We can also use `process.stdout.write()` to write without a newline:
-```
+```js
 process.stdout.write("Hi"); 
 process.stdout.write(" there!");
 ```
@@ -284,7 +340,8 @@ Escape Characters are special characters that help use to write special ond hard
 |`\\`|Backslash|`"C:\\Users\\Alice"`|
 |`\"`|Double quote|`"He said, \"Hello!\""`|
 |`\'`|Single quote|`'It\'s fine.'`|
-```
+
+```js
 console.log("She said, \"Welcome!\"\nLet’s start learning Node.js.\n");
 ```
 **Output:**
@@ -303,7 +360,7 @@ The `question()` method needs two things:
 
 Inside this callback function, we can access the user’s input.  
 Finally, once we finish working with the user's input, we close the interface by calling `rl.close()`.  
-```
+```js
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -313,6 +370,22 @@ const rl = readline.createInterface({
 
 rl.question('What is your name? ', (name) => {
   console.log(`Hello, ${name}!`);
+  rl.close();
+});
+```
+If we want to read numbers we must convert the input to number since readline recive the input as string
+```js
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('How old are you? ', (age) => {
+  // convert to number before using it
+  console.log(`After 5 years you will be ${parseInt(age) + 5} years old!`);
+
   rl.close();
 });
 ```
