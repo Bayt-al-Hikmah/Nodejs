@@ -9,9 +9,9 @@
 
 
 // require the installed package
-
-// use the installed package
 const axios = require('axios');
+// use the installed package
+
 axios.get('https://jsonplaceholder.typicode.com/posts/1')
   .then(response => {
     console.log(response.data);
