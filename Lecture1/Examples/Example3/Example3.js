@@ -14,7 +14,7 @@ console.log( a ** b);   // result: 10000.0 Float
 
 // compound assignment operators
 
-c = 10; 
+a = 10; 
 a += 5;        // result: 15 | same as  a =  a + 5
 
 a = 10; 
