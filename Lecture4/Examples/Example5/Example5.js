@@ -22,9 +22,11 @@ class Dog extends Animal {
 class Cat extends Animal {
     // override speak
     speak() {
-        console.log(`${this.name} barks`);
+        console.log(`${this.name} mewo`);
     }
 }
 
 const myDog = new Dog("Rex");
 myDog.speak(); 
+const myCat = new Cat("Alen");
+myCar.speak(); 
