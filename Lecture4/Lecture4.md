@@ -83,7 +83,7 @@ const dog = new Animal("Buddy");
 dog.speak();
 ```
 ### Inheritance
-Inheritance allows a class to inherit properties and methods from another class. In JavaScript this is done using the `extends` keyword and `super()` function.
+Inheritance allows a class to inherit properties and methods from another class. In JavaScript this is done using the `extends` keyword.
 ```js
 class Animal {
   constructor(name) {
@@ -104,7 +104,7 @@ class Dog extends Animal {
 class Cat extends Animal {
   // override speak
   speak() {
-    console.log(`${this.name} barks`);
+    console.log(`${this.name} mewo`);
   }
 }
 
