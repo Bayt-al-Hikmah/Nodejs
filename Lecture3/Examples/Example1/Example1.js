@@ -55,12 +55,12 @@ greet_names("Mohamed", "Ahmed", "Ali");
 function greet_names2(greeting, ...names) {
   console.log(`${greeting}, ${names.join(' and ')}!`);
 }
-greet('Hello', 'Alice', 'Bob'); // "Hello, Alice and Bob!"
+greet_names2('Hello', 'Alice', 'Bob'); // "Hello, Alice and Bob!"
 
 
 // Variable Scope
 
-global_message = "This is global.";
+let global_message = "This is global.";
 
 function my_function(num1, num2) {
     // access the global variable
@@ -71,6 +71,6 @@ function my_function(num1, num2) {
     return result;
 }
 
-sum = my_function(2, 3);
+let sum = my_function(2, 3);
 console.log(sum);
 console.log(result); // Error: Undefined variable result
